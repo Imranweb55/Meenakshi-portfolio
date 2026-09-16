@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* ===== Design tokens (Tailwind v4 style) ===== */
+@theme {
+  /* Brand colours */
+  --color-ink: #0d0b09;
+  /* deep black-brown (navbar / dark bands) */
+  --color-ink-soft: #17130f;
+  /* slightly lighter dark */
+  --color-cream: #faf7f2;
+  /* page background */
+  --color-cream-dim: #f3eee6;
+  /* alternate section bg */
+  --color-gold: #b8894a;
+  /* primary gold accent */
+  --color-gold-light: #d9b382;
+  /* lighter gold for dark bg text */
+  --color-line: #e2dbcf;
+  /* hairline borders on light bg */
+  --color-line-dark: #2e2620;
+  /* hairline borders on dark bg */
+  --color-body: #4a443d;
+  /* body text on light bg */
+  --color-heading: #1b1712;
+  /* headings on light bg */
+
+  /* Typography */
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Jost", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== Base ===== */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-body);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-heading);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ===== Small reusable utilities ===== */
+@layer utilities {
+
+  /* page container */
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* small uppercase eyebrow label */
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
